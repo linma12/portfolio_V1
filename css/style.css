@@ -1,0 +1,152 @@
+/* COLOR PALETTE
+https://coolors.co/283d3b-197278-edddd4-c44536-772e25
+https://coolors.co/8edce6-d5dcf9-a7b0ca-725e54-443627 (bis)
+https://coolors.co/0d1b2a-1b263b-415a77-778da9-e0e1dd (blue)
+https://coolors.co/8693ab-bdd4e7-212227-637074-aab9c
+#282D3B: dark green
+#197278: turquoise
+#EDDDD4: almost pink
+#C44536: bright orange
+#772E25: dark red
+*/
+
+/* Global styles
+------------------------------------*/
+html {
+  box-sizing: border-box;
+  color: #778da9;
+  font-family: "Oxygen", sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  color: inherit;
+}
+
+body {
+  width: 80vw;
+  margin: auto; /*centre le contenu*/
+  background: #1b263b;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "about"
+    "experience"
+    "projects";
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+}
+
+body > * {
+  grid-column: 1 / span 12;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 1;
+}
+
+/* Header style
+  ------------------------------------*/
+.nav-bar {
+  margin-top: 0;
+  display: flex;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.dropdown {
+  /* flex: 1 1 0px; */
+  /* text-align: center; */
+  display: block;
+  padding: 10px;
+  padding: 10px 15px;
+}
+
+.dropdown a:hover {
+  color: #778da9;
+}
+
+a {
+  text-decoration: none; /*les liens ne sont surlignés*/
+  color: #e0e1dd;
+}
+
+#animated-text {
+  display: inline;
+}
+
+/* About me
+  ------------------------------------*/
+.about {
+  height: 80vh;
+  grid-column: 1 / span 12;
+  /* grid-area: about; */
+}
+
+/* Work Experience
+  ------------------------------------*/
+.experience {
+  margin: 0px;
+  /* grid-area: experience; */
+}
+.jobs {
+  display: grid;
+  height: 80vh;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-content: center;
+  border: 2px solid pink;
+}
+
+.work-experience {
+  justify-self: center;
+  grid-column: 1 / 3;
+  grid-row: 1;
+  padding: 10px;
+  height: 250px;
+  width: 300px;
+  border-radius: 15px;
+  background: #0d1b2a;
+  box-shadow: -10px 0 4px -4px black;
+}
+
+section[data-state="small"]:hover {
+  /* .work-experience:hover { */
+  transform: rotate(5deg);
+}
+
+section[data-state="big"] {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+  border-radius: 0px;
+  box-shadow: none;
+  position: static;
+  left: 0px;
+}
+
+/* cursor animations */
+
+/* @keyframes animated-cursor {
+    from {
+      border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+      border-right-color: transparent;
+    }
+  } */
+
+/* Projects
+  ------------------------------------*/
+.projects {
+  height: 80vh;
+  /* grid-area: projects; */
+}
