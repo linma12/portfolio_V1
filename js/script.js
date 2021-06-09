@@ -5,9 +5,8 @@ var jobDescription = h2.innerHTML;
 var j = 0;
 var newJobDescr= "";
 
-console.log(h2.innerHTML.substring(0, h2.innerHTML.length - 1))
-
 function setTick() {
+
     if (animatedText.style.borderRightStyle == "solid"){
         animatedText.style.borderRightStyle = "";
     }else{
@@ -18,6 +17,7 @@ function setTick() {
 var myVar = setInterval(setTick, 500);
 
 function typeWriter(){
+
     if(newJob.length != h2.innerHTML.length){
         h2.innerHTML = h2.innerHTML.concat(newJob.charAt(j))
         j++;
@@ -28,6 +28,7 @@ function typeWriter(){
     animatedText.style.borderRightStyle = "";
 }
 function deleteText(){
+
     if(h2.innerHTML.length){
         h2.innerHTML = h2.innerHTML.substring(0, h2.innerHTML.length - 1)
         setTimeout(deleteText, 100);
@@ -78,7 +79,21 @@ allMyJobs.forEach(element => {
         element.setAttribute("data-state","big")
         element.style.position = "static";
         element.style.left = "0px";
-        console.log("i clicked on", element.getAttribute("data-id"));
+    })
+})
+
+const menuIcon = document.querySelector(".menu_icon");
+const navBar = document.querySelector(".nav-bar");
+const arrow = document.querySelector(".arrow");
+
+menuIcon.addEventListener("click", () => {
+    menuIcon.classList.toggle("change");
+    navBar.classList.toggle("show");
+})
+
+arrow.addEventListener("click", () => {
+    allMyJobs.forEach(element => {
+        element.setAttribute("data-state","small");
     })
 })
 
