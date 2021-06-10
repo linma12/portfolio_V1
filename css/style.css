@@ -41,11 +41,13 @@ body > * {
 h1 {
   font-size: 50px;
   line-height: 1;
+  margin: 50px 0 20px 0;
 }
 
 h2 {
   font-size: 40px;
   line-height: 1;
+  margin-bottom: 30px;
 }
 
 /* Header style
@@ -102,12 +104,26 @@ a {
   transform: rotate(45deg) translate(-8px, -8px);
 }
 
+.main {
+  height: 60vh;
+}
+
 /* About me
   ------------------------------------*/
 .about {
   height: 100vh;
   text-align: justify;
   grid-column: 1 / span 12;
+}
+
+.about > .content-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.presentation {
+  margin-right: 20px;
+  align-self: center;
 }
 
 /* Work Experience
@@ -118,8 +134,9 @@ a {
 }
 .jobs {
   display: grid;
-  height: 80vh;
-  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  height: 60vh;
+  grid-template-columns: repeat(12, 1fr);
   justify-content: center;
   align-content: center;
 }
@@ -136,6 +153,26 @@ a {
   box-shadow: -10px 0 4px -4px black;
 }
 
+.exp1 {
+  grid-column-start: 3;
+  grid-column-end: 7;
+}
+
+.exp2 {
+  grid-column-start: 4;
+  grid-column-end: 8;
+  transition: grid-column-start 0.5s ease-in;
+}
+
+.work-experience:hover ~ .work-experience {
+  grid-column-start: 7;
+  grid-column-end: 10;
+}
+
+section[data-state="small"] {
+  transition: all 0.1s;
+}
+
 section[data-state="small"]:hover {
   transform: rotate(5deg);
 }
@@ -148,6 +185,8 @@ section[data-state="big"] {
   box-shadow: none;
   position: static;
   left: 0px;
+
+  z-index: 1;
 }
 
 .icon {
@@ -162,12 +201,22 @@ section[data-state="big"] {
 
 .arrow {
   position: absolute;
-  top: 25px;
+  top: 250px;
+  left: 250px;
   width: 90%;
   height: 10px;
   background-color: #fff;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   animation: arrow 700ms linear infinite;
+  z-index: 3;
+}
+
+.inactive {
+  display: none;
+}
+
+.active {
+  display: block;
 }
 
 .arrow::after,
