@@ -1,5 +1,5 @@
 const animatedText = document.getElementById("animated-text");
-var newJob = "Front-end developper.";
+var newJob = "Software developper.";
 const h2 = document.querySelector("h2");
 var jobDescription = h2.innerHTML;
 var j = 0;
@@ -57,34 +57,37 @@ const ekium = new experience("Ekium", "Automation Project Engineer", "Lyon", "Se
 const genzyme = new experience("Genzyme", "Automation Engineer", "Lyon", "January 2014", "July 2015", "https://www.sanofi.com/en/your-health/specialty-care")
 
 const Jobs = [genzyme, ekium];
-var position = 0;
+var position = 1;
 
 Jobs.forEach(element => {
     const section = document.createElement("section");
-    section.setAttribute("class", "work-experience")
+    section.setAttribute("class", "work-experience exp".concat(position.toString()))
+    position++;
     section.setAttribute("data-id", element.company)
     section.setAttribute("data-state", "small")
     const content = `<h3>${element.jobDescr}<br><a href="${element.url}">@ ${element.company}</a><h3>`;
-    section.style.position = "relative";
-    section.style.left = position.toString().concat("px");
-    position += 100;
+    // section.style.position = "relative";
+    // section.style.left = position.toString().concat("px");
+    // position += 100;
     section.innerHTML = content;
     travail.append(section);
 })
 
+position = 0;
 const allMyJobs = document.querySelectorAll(".work-experience")
+const menuIcon = document.querySelector(".menu_icon");
+const navBar = document.querySelector(".nav-bar");
+const arrow = document.querySelector(".arrow");
 
 allMyJobs.forEach(element => {
     element.addEventListener("click", () =>{
         element.setAttribute("data-state","big")
+        arrow.classList.toggle("active");
+        arrow.classList.toggle("inactive");
         element.style.position = "static";
         element.style.left = "0px";
     })
 })
-
-const menuIcon = document.querySelector(".menu_icon");
-const navBar = document.querySelector(".nav-bar");
-const arrow = document.querySelector(".arrow");
 
 menuIcon.addEventListener("click", () => {
     menuIcon.classList.toggle("change");
@@ -92,9 +95,15 @@ menuIcon.addEventListener("click", () => {
 })
 
 arrow.addEventListener("click", () => {
+    arrow.classList.toggle("active");
+    arrow.classList.toggle("inactive");
     allMyJobs.forEach(element => {
         element.setAttribute("data-state","small");
+        // element.style.position = "relative";
+        // element.style.left = position.toString().concat("px");
+        // position += 100;
     })
+    // position = 0;
 })
 
 
